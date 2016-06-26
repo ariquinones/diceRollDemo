@@ -1,0 +1,90 @@
+<<!DOCTYPE html>
+<html>
+<head>
+	<title>Dice Roll Demo</title>
+</head>
+<style type="text/css">
+	div {
+	  margin: 10% auto; 
+	  text-align: center;
+	}
+	.dice {
+	  width: 100px;
+	  height: 100px;
+	  display: inline-block;
+	  margin: 0 2%;
+	  border-radius: 12px;
+	  background: rgba(50,100,255,1);
+	  border-bottom: 5px solid rgba(50,200,255,1);
+	  border-right: 5px solid rgba(50,200,255,1);
+	  border-top: 5px solid rgba(50,255,150,.5);
+	  border-left: 5px solid rgba(50,255,150,.5);
+	}
+	span {
+	  color: white;
+	  font-size: 5em;
+	}
+	#rollDiceBtn {
+	  padding: 2% 4%;
+	  border: none;
+	  border-radius: 12px;
+	  color: white;
+	  background: rgba(50,100,255,1);
+	}
+	button:hover {
+	  cursor: pointer;
+	}
+	button:focus {
+	  outline: none;
+	}
+
+</style>
+
+<body>
+
+<div class="diceContainer">
+  <div class="dice" id="firstDice">
+     <span></span>
+  </div>
+</div>
+
+<div class="btnContainer">
+  <button id="rollDiceBtn">Roll Me</button>
+</div>
+<div>
+  <h1 id="numberRolled"></h1>
+  <h2></h2>
+</div>
+<script type="text/javascript">
+	function randInRange(start,stop) {
+	  return Math.floor((Math.random() * stop) + start)
+	}
+
+	var money = 0
+	var firstDice = document.querySelector('#firstDice')
+	var diceBtn = document.querySelector('#rollDiceBtn')
+	diceBtn.addEventListener('click', diceRoll)
+	var numberRolled = document.querySelector('#numberRolled')
+
+	function diceRoll () {
+	  if (firstDice.style.transform = 'rotate(360deg)') {
+	        firstDice.style.transform = ''
+	        firstDice.style.transition = ''
+	  }
+	    function rotate() {
+	      firstDice.style.transform = "rotate(360deg)"
+	      firstDice.style.transition = "1s all ease"
+	      var number = randInRange(1,6)
+	      money += number
+	      document.querySelector('span').innerHTML = number
+	      numberRolled.innerHTML = "You rolled a " + number + " you now have " + money + " points!"
+	      // numberRolled.innerHTML = `You rolled a ${number}`
+	      if (money > 21) {
+	      document.querySelector('h2').innerHTML = "Yay you reached over 21!"
+	    }
+	    }setTimeout(rotate, 100)
+	} 
+
+</script>
+</body>
+</html>
